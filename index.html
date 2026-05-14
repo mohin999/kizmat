@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIZMAT EVENTS — Where Destiny Meets the Dance Floor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8892E;
+  --black: #0A0A0A;
+  --black-soft: #111;
+  --black-card: #1A1A1A;
+  --white: #F5F0E8;
+  --red: #C41E3A;
+  --red-glow: #FF2D55;
+  --gray: #888;
+  --gray-dark: #333;
+  --neon-pink: #FF10F0;
+  --neon-blue: #00D4FF;
+  --neon-green: #39FF14;
+  --neon-purple: #BF40FF;
+  --neon-orange: #FF6B00;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:var(--black)}
+
+/* ============ NAVBAR ============ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+.navbar.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(212,168,83,.15)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:6px;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.nav-logo span{color:var(--white);font-weight:400}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{color:var(--white);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;position:relative;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black)!important;padding:10px 28px;border-radius:2px;font-weight:600!important;box-shadow:0 0 30px rgba(212,168,83,.2);transition:all .3s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(212,168,83,.4)}
+.menu-toggle{display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1001}
+.menu-toggle span{width:28px;height:2px;background:var(--gold);transition:all .3s}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'Syne',sans-serif;font-size:28px;font-weight:600;letter-spacing:4px;text-transform:uppercase;transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* ============ HERO - DJ NIGHTCLUB VIBES ============ */
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#050508}
+
+/* Realistic concert crowd background */
+.hero-deep-bg{position:absolute;inset:0;background:#050508}
+.realistic-crowd-photo{position:absolute;inset:0;background-image:linear-gradient(to bottom,rgba(5,5,8,.30),rgba(5,5,8,.58) 45%,rgba(5,5,8,.92) 100%),url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=2400&q=85');background-size:cover;background-position:center bottom;filter:saturate(1.15) contrast(1.08);transform:scale(1.03);animation:photoBreath 9s ease-in-out infinite alternate}
+.realistic-crowd-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,168,83,.08),transparent 45%),radial-gradient(ellipse at 20% 30%,rgba(255,16,240,.18),transparent 35%),radial-gradient(ellipse at 80% 25%,rgba(0,212,255,.18),transparent 35%);mix-blend-mode:screen}
+.club-dark-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.18),rgba(0,0,0,.15) 35%,rgba(0,0,0,.60) 78%,rgba(0,0,0,.92));z-index:1;pointer-events:none}
+.dj-stage-real{position:absolute;left:50%;bottom:23vh;transform:translateX(-50%);width:min(520px,70vw);height:80px;border-radius:90px 90px 12px 12px;background:linear-gradient(to bottom,rgba(255,255,255,.10),rgba(0,0,0,.55));box-shadow:0 0 90px rgba(212,168,83,.18),0 0 150px rgba(0,212,255,.14);z-index:2;opacity:.52;filter:blur(.2px)}
+.dj-stage-real::before{content:'DJ';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-weight:800;letter-spacing:16px;color:rgba(245,240,232,.18);font-size:24px}
+.music-notes{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.music-note{position:absolute;bottom:22vh;font-size:20px;color:rgba(245,240,232,.55);text-shadow:0 0 16px rgba(212,168,83,.7);animation:noteFloat 5.5s ease-in-out infinite}
+.hero-content{background:radial-gradient(ellipse at center,rgba(0,0,0,.48),rgba(0,0,0,.18) 55%,transparent 72%);border-radius:50%;padding:40px 55px}
+
+/* Fog / haze layers */
+.fog{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.fog-layer{position:absolute;width:200%;height:100%;opacity:.08;animation:fogDrift linear infinite}
+.fog-layer.f1{background:radial-gradient(ellipse at 30% 60%,rgba(255,16,240,.3),transparent 50%),radial-gradient(ellipse at 70% 40%,rgba(0,212,255,.2),transparent 50%);animation-duration:20s}
+.fog-layer.f2{background:radial-gradient(ellipse at 60% 50%,rgba(191,64,255,.25),transparent 50%),radial-gradient(ellipse at 20% 70%,rgba(255,107,0,.15),transparent 40%);animation-duration:28s;animation-direction:reverse;opacity:.06}
+
+/* Laser beams */
+.lasers{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.laser{position:absolute;top:0;width:3px;height:120%;transform-origin:top center;opacity:.4;filter:blur(1px)}
+.laser::after{content:'';position:absolute;top:0;left:-4px;right:-4px;bottom:0;background:inherit;filter:blur(8px);opacity:.5}
+.laser.l1{left:15%;background:linear-gradient(to bottom,var(--neon-pink),transparent 80%);animation:laserSwing1 4s ease-in-out infinite}
+.laser.l2{left:35%;background:linear-gradient(to bottom,var(--neon-blue),transparent 80%);animation:laserSwing2 5s ease-in-out infinite;animation-delay:.5s}
+.laser.l3{left:55%;background:linear-gradient(to bottom,var(--neon-purple),transparent 80%);animation:laserSwing3 4.5s ease-in-out infinite;animation-delay:1s}
+.laser.l4{left:75%;background:linear-gradient(to bottom,var(--neon-green),transparent 80%);animation:laserSwing1 5.5s ease-in-out infinite;animation-delay:1.5s}
+.laser.l5{left:85%;background:linear-gradient(to bottom,var(--neon-pink),transparent 80%);animation:laserSwing2 3.8s ease-in-out infinite;animation-delay:.8s}
+.laser.l6{left:45%;background:linear-gradient(to bottom,var(--neon-orange),transparent 80%);animation:laserSwing3 4.2s ease-in-out infinite;animation-delay:2s}
+.laser.l7{left:25%;background:linear-gradient(to bottom,var(--neon-blue),transparent 85%);animation:laserSwing1 6s ease-in-out infinite;animation-delay:.3s;opacity:.25}
+.laser.l8{left:65%;background:linear-gradient(to bottom,var(--neon-purple),transparent 85%);animation:laserSwing2 5s ease-in-out infinite;animation-delay:1.2s;opacity:.25}
+
+/* Spotlight cones from top */
+.spotlights{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.spotlight{position:absolute;top:-10%;width:30%;height:130%;opacity:.06;border-radius:50%;filter:blur(40px)}
+.spotlight.s1{left:10%;background:radial-gradient(ellipse at 50% 0%,var(--neon-pink),transparent 70%);animation:spotPulse 3s ease-in-out infinite}
+.spotlight.s2{left:40%;background:radial-gradient(ellipse at 50% 0%,var(--neon-blue),transparent 70%);animation:spotPulse 4s ease-in-out infinite;animation-delay:1s}
+.spotlight.s3{left:65%;background:radial-gradient(ellipse at 50% 0%,var(--neon-purple),transparent 70%);animation:spotPulse 3.5s ease-in-out infinite;animation-delay:2s}
+
+/* Disco / mirror ball light scatter */
+.disco-dots{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.disco-dot{position:absolute;width:4px;height:4px;border-radius:50%;opacity:0;animation:discoBlink 2s ease-in-out infinite}
+
+/* Dancing crowd silhouette */
+.crowd-container{position:absolute;bottom:0;left:0;right:0;height:35vh;pointer-events:none;z-index:3}
+.crowd-svg{position:absolute;bottom:0;width:100%;height:100%}
+
+/* Strobe flash */
+.strobe{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;z-index:2;animation:strobe 8s ease-in-out infinite}
+
+/* Floor glow */
+.floor-glow{position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(191,64,255,.06),rgba(0,212,255,.03),transparent);pointer-events:none;z-index:1}
+
+/* Particles */
+.particles{position:absolute;inset:0;pointer-events:none;z-index:2}
+.particle{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;animation:particleFloat linear infinite}
+
+/* ============ HERO CONTENT ============ */
+.hero-content{text-align:center;position:relative;z-index:10;padding:0 20px}
+
+/* LOGO - the main centerpiece */
+.hero-logo-container{margin-bottom:30px;opacity:0;animation:logoReveal 1.5s ease .3s forwards}
+.hero-logo{font-family:'Syne',sans-serif;font-size:clamp(80px,16vw,200px);font-weight:800;letter-spacing:8px;text-transform:uppercase;line-height:.85;position:relative;display:inline-block}
+.hero-logo .k{color:var(--gold);text-shadow:0 0 60px rgba(212,168,83,.5),0 0 120px rgba(212,168,83,.2)}
+.hero-logo .izmat{-webkit-text-stroke:2px var(--gold);color:transparent;filter:drop-shadow(0 0 40px rgba(212,168,83,.15))}
+.hero-logo-glow{position:absolute;inset:-40px;background:radial-gradient(ellipse at center,rgba(212,168,83,.1),transparent 70%);filter:blur(30px);z-index:-1;animation:logoPulse 3s ease-in-out infinite}
+
+.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(14px,2vw,22px);font-style:italic;color:rgba(245,240,232,.6);letter-spacing:4px;margin-bottom:10px;opacity:0;animation:fadeUp .8s ease .8s forwards}
+.hero-sub-brand{font-size:12px;letter-spacing:8px;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeUp .8s ease 1s forwards;margin-bottom:40px}
+.hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease 1.2s forwards}
+
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);padding:16px 48px;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .4s;position:relative;overflow:hidden}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(212,168,83,.3)}
+.btn-outline{border:1px solid rgba(212,168,83,.4);color:var(--gold);padding:16px 48px;font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;background:transparent;cursor:pointer;text-decoration:none;transition:all .4s}
+.btn-outline:hover{background:rgba(212,168,83,.1);border-color:var(--gold);transform:translateY(-3px)}
+
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeUp .8s ease 1.5s forwards}
+.scroll-indicator span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scroll-line{width:1px;height:30px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease infinite}
+
+/* Beat visualizer bars */
+.beat-viz{display:flex;gap:3px;justify-content:center;margin-bottom:30px;opacity:0;animation:fadeUp .8s ease .6s forwards}
+.beat-bar{width:4px;background:var(--gold);border-radius:2px;animation:beatPump ease-in-out infinite}
+.beat-bar:nth-child(1){height:20px;animation-duration:.5s}
+.beat-bar:nth-child(2){height:35px;animation-duration:.7s;animation-delay:.1s}
+.beat-bar:nth-child(3){height:50px;animation-duration:.4s;animation-delay:.2s}
+.beat-bar:nth-child(4){height:30px;animation-duration:.6s;animation-delay:.05s}
+.beat-bar:nth-child(5){height:45px;animation-duration:.5s;animation-delay:.15s}
+.beat-bar:nth-child(6){height:25px;animation-duration:.8s;animation-delay:.25s}
+.beat-bar:nth-child(7){height:40px;animation-duration:.45s;animation-delay:.1s}
+.beat-bar:nth-child(8){height:20px;animation-duration:.65s;animation-delay:.2s}
+.beat-bar:nth-child(9){height:50px;animation-duration:.55s;animation-delay:.05s}
+
+/* ============ MARQUEE ============ */
+.marquee-section{padding:30px 0;border-top:1px solid rgba(212,168,83,.1);border-bottom:1px solid rgba(212,168,83,.1);overflow:hidden;background:var(--black-soft)}
+.marquee-track{display:flex;animation:marquee 25s linear infinite;width:max-content}
+.marquee-item{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:rgba(212,168,83,.3);white-space:nowrap;padding:0 40px;display:flex;align-items:center;gap:40px}
+.marquee-item .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:.4}
+
+/* ============ STATS ============ */
+.stats-section{padding:100px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1200px;margin:0 auto}
+.stat-item{text-align:center;position:relative}
+.stat-item::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,168,83,.2),transparent)}
+.stat-item:last-child::after{display:none}
+.stat-number{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);font-weight:500}
+
+/* ============ COMMON ============ */
+.section{padding:120px 60px;max-width:1400px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1.1;margin-bottom:20px}
+.section-desc{font-size:17px;color:var(--gray);max-width:560px;line-height:1.7;font-weight:300}
+
+/* ============ ABOUT ============ */
+.about-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-image{position:relative;aspect-ratio:4/5;overflow:hidden}
+.about-image-inner{width:100%;height:100%;background:linear-gradient(135deg,rgba(212,168,83,.15),rgba(196,30,58,.1)),linear-gradient(45deg,var(--black-card),var(--gray-dark));display:flex;align-items:center;justify-content:center;position:relative}
+.about-image-inner::before{content:'K';font-family:'Syne',sans-serif;font-size:300px;font-weight:800;color:rgba(212,168,83,.06);position:absolute}
+.about-image-border{position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:1px solid rgba(212,168,83,.2)}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
+.about-feature{padding:20px 0;border-top:1px solid rgba(212,168,83,.15)}
+.about-feature h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px;color:var(--gold)}
+.about-feature p{font-size:14px;color:var(--gray);line-height:1.6}
+
+/* ============ EVENTS ============ */
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.event-card{background:var(--black-card);border:1px solid rgba(212,168,83,.08);overflow:hidden;transition:all .5s;cursor:pointer;position:relative}
+.event-card:hover{border-color:rgba(212,168,83,.3);transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.event-card:first-child{grid-row:span 2}
+.event-image{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative}
+.event-card:first-child .event-image{aspect-ratio:16/14}
+.event-image-bg{width:100%;height:100%;transition:transform .6s;background-size:400% 400%;animation:gradShift 8s ease infinite}
+.event-card:hover .event-image-bg{transform:scale(1.05)}
+.ev1{background:linear-gradient(135deg,#1a0a2e,#16213e,#0f3460)}
+.ev2{background:linear-gradient(135deg,#2d1b0e,#4a2c0a,#1a0a00)}
+.ev3{background:linear-gradient(135deg,#0a1628,#1a2a4a,#0d1f3c)}
+.ev4{background:linear-gradient(135deg,#1e0a0a,#3d0c0c,#2a0505)}
+.ev5{background:linear-gradient(135deg,#0a1e1e,#0c2d2d,#051a1a)}
+.event-badge{position:absolute;top:16px;left:16px;background:var(--red);color:white;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px}
+.event-badge.vip{background:var(--gold);color:var(--black)}
+.event-info{padding:24px}
+.event-date{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600}
+.event-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.event-venue{font-size:13px;color:var(--gray);margin-bottom:16px}
+.event-footer{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.event-price{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--gold)}
+.event-btn{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:none;border:1px solid rgba(255,255,255,.2);padding:8px 20px;cursor:pointer;transition:all .3s;text-decoration:none}
+.event-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ============ SERVICES ============ */
+.services-section{background:var(--black-soft);padding:120px 0}
+.services-inner{max-width:1400px;margin:0 auto;padding:0 60px}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.service-card{background:var(--black-card);padding:50px 36px;position:relative;overflow:hidden;transition:all .5s;cursor:pointer}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--neon-pink),var(--neon-blue));transform:scaleX(0);transition:transform .5s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:rgba(212,168,83,.03)}
+.service-number{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:rgba(212,168,83,.1);margin-bottom:24px}
+.service-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:14px}
+.service-desc{font-size:14px;color:var(--gray);line-height:1.7}
+
+/* ============ GALLERY ============ */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:280px 280px;gap:8px;margin-top:60px}
+.gallery-item{overflow:hidden;position:relative;cursor:pointer}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-item-bg{width:100%;height:100%;transition:transform .6s}
+.gallery-item:hover .gallery-item-bg{transform:scale(1.08)}
+.gallery-item .overlay{position:absolute;inset:0;background:rgba(10,10,10,.6);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .overlay{opacity:1}
+.overlay span{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:10px 24px}
+.g1{background:linear-gradient(135deg,#1a0f2e,#2d1854)}.g2{background:linear-gradient(135deg,#2a1508,#3d1e0a)}.g3{background:linear-gradient(135deg,#0d1a2e,#1a2d4a)}.g4{background:linear-gradient(135deg,#1e0d0d,#381414)}.g5{background:linear-gradient(135deg,#0f1e0d,#1a3014)}.g6{background:linear-gradient(135deg,#1e1a0d,#382e14)}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials-section{background:var(--black-soft)}
+.testimonials-track{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.testimonial{background:var(--black-card);border:1px solid rgba(212,168,83,.08);padding:40px;position:relative}
+.testimonial::before{content:'"';font-family:'Playfair Display',serif;font-size:120px;color:rgba(212,168,83,.08);position:absolute;top:-10px;left:20px;line-height:1}
+.testimonial-text{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;line-height:1.8;color:rgba(245,240,232,.8);margin-bottom:24px;position:relative;z-index:1}
+.testimonial-author{font-size:14px;font-weight:600;color:var(--gold)}
+.testimonial-role{font-size:12px;color:var(--gray);margin-top:4px}
+.stars{color:var(--gold);margin-bottom:16px;font-size:14px;letter-spacing:4px}
+
+/* ============ CTA ============ */
+.cta-section{padding:160px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,168,83,.08),transparent 60%)}
+.cta-title{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:800;margin-bottom:20px;position:relative}
+.cta-desc{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--gray);margin-bottom:50px;position:relative}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,168,83,.1);padding:80px 60px 40px}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px}
+.footer-brand p{color:var(--gray);font-size:14px;line-height:1.8;margin-top:16px;max-width:320px}
+.footer-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:12px}
+.footer-links a{color:var(--gray);text-decoration:none;font-size:14px;transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:16px;margin-top:20px}
+.footer-social a{width:44px;height:44px;border:1px solid rgba(212,168,83,.2);display:flex;align-items:center;justify-content:center;color:var(--gold);text-decoration:none;font-size:16px;transition:all .3s}
+.footer-social a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.footer-bottom{max-width:1400px;margin:60px auto 0;padding-top:30px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--gray);letter-spacing:2px}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes logoReveal{0%{opacity:0;transform:scale(.8);filter:blur(10px)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
+@keyframes logoPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes fogDrift{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes laserSwing1{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(15deg)}}
+@keyframes laserSwing2{0%,100%{transform:rotate(20deg)}50%{transform:rotate(-20deg)}}
+@keyframes laserSwing3{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(25deg)}}
+@keyframes spotPulse{0%,100%{opacity:.04}50%{opacity:.1}}
+@keyframes strobe{0%,94%,96.5%,100%{opacity:0}95%{opacity:.04}96%{opacity:0}}
+@keyframes beatPump{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+@keyframes discoBlink{0%,100%{opacity:0}50%{opacity:.7}}
+@keyframes particleFloat{0%{transform:translateY(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-100vh);opacity:0}}
+@keyframes photoBreath{0%{transform:scale(1.03) translateY(0)}100%{transform:scale(1.07) translateY(-10px)}}
+@keyframes noteFloat{0%{transform:translateY(0) translateX(0) rotate(-8deg);opacity:0}15%{opacity:.75}70%{opacity:.48}100%{transform:translateY(-42vh) translateX(70px) rotate(16deg);opacity:0}}
+@keyframes crowdBounce1{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes crowdBounce2{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes crowdBounce3{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes handsUp1{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@keyframes handsUp2{0%,100%{transform:rotate(0deg)}50%{transform:rotate(12deg)}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .navbar{padding:16px 30px}
+  .nav-links{display:none}
+  .menu-toggle{display:flex}
+  .section{padding:80px 30px}
+  .about-section{grid-template-columns:1fr;gap:40px}
+  .about-image{max-width:400px;margin:0 auto}
+  .events-grid{grid-template-columns:1fr 1fr}
+  .event-card:first-child{grid-row:span 1}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .stats-section{grid-template-columns:repeat(2,1fr);padding:60px 30px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-item:nth-child(1){grid-column:span 2}
+  .testimonials-track{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .services-inner{padding:0 30px}
+}
+@media(max-width:600px){
+  .events-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-section{grid-template-columns:1fr 1fr;gap:30px}
+  .stat-number{font-size:40px}
+  .stat-item::after{display:none}
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item:nth-child(1){grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+  .cta-section{padding:100px 30px}
+  .about-features{grid-template-columns:1fr}
+  .hero-logo{letter-spacing:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">KIZMAT<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact" class="nav-cta">Get Tickets</a></li>
+  </ul>
+  <div class="menu-toggle" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+  <a href="#events" onclick="this.parentElement.classList.remove('active')">Events</a>
+  <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+  <a href="#gallery" onclick="this.parentElement.classList.remove('active')">Gallery</a>
+  <a href="#contact" onclick="this.parentElement.classList.remove('active')">Get Tickets</a>
+</div>
+
+<!-- ============ HERO - NIGHTCLUB VIBES ============ -->
+<section class="hero" id="home">
+  <div class="hero-deep-bg"></div>
+  <div class="club-dark-overlay" aria-hidden="true"></div>
+  <div class="dj-stage-real" aria-hidden="true"></div>
+
+  <!-- FOG -->
+  <div class="fog">
+    <div class="fog-layer f1"></div>
+    <div class="fog-layer f2"></div>
+  </div>
+
+  <!-- LASER BEAMS -->
+  <div class="lasers">
+    <div class="laser l1"></div>
+    <div class="laser l2"></div>
+    <div class="laser l3"></div>
+    <div class="laser l4"></div>
+    <div class="laser l5"></div>
+    <div class="laser l6"></div>
+    <div class="laser l7"></div>
+    <div class="laser l8"></div>
+  </div>
+
+  <!-- SPOTLIGHTS -->
+  <div class="spotlights">
+    <div class="spotlight s1"></div>
+    <div class="spotlight s2"></div>
+    <div class="spotlight s3"></div>
+  </div>
+
+  <!-- DISCO DOTS -->
+  <div class="disco-dots" id="discoDots"></div>
+
+  <!-- STROBE -->
+  <div class="strobe"></div>
+
+  <!-- FLOOR GLOW -->
+  <div class="floor-glow"></div>
+
+  <!-- PARTICLES -->
+  <div class="particles" id="particles"></div>
+
+  <!-- FLOATING MUSIC NOTES -->
+  <div class="music-notes" id="musicNotes" aria-hidden="true"></div>
+
+  <!-- HANDS ONLY VIBING: no people/faces/bodies -->
+  <div class="hands-only-stage" aria-hidden="true">
+    <span class="music-note n1">♪</span>
+    <span class="music-note n2">♫</span>
+    <span class="music-note n3">♪</span>
+    <span class="music-note n4">♬</span>
+    <span class="music-note n5">♫</span>
+    <svg class="hands-only-svg" viewBox="0 0 1440 430" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#11111b" stop-opacity=".35"/>
+          <stop offset="45%" stop-color="#08080d" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#050509" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="300" width="1440" height="130" fill="url(#bottomFade)"/>
+      <path class="sound-rings" d="M210 185 Q235 160 260 185"/>
+      <path class="sound-rings" style="animation-delay:.35s" d="M640 160 Q680 125 720 160"/>
+      <path class="sound-rings" style="animation-delay:.7s" d="M1125 190 Q1160 155 1195 190"/>
+
+      <!-- left side raised hands -->
+      <path class="hand-silhouette hand-a glow-pink" d="M76 430 C80 372 88 323 93 282 C96 260 89 239 98 227 C106 216 119 227 119 246 L119 286 C119 292 127 292 128 286 L132 205 C133 188 146 179 156 188 C164 195 164 206 163 219 L160 292 C160 299 169 300 171 293 L184 214 C187 197 201 190 211 201 C217 207 218 217 215 229 L199 303 C198 310 207 313 211 307 L237 258 C245 243 260 240 268 251 C274 260 270 272 263 283 L229 338 C217 359 216 389 221 430 Z"/>
+      <rect class="wrist-band" x="91" y="376" width="113" height="12" rx="6" transform="rotate(-3 147 382)"/>
+
+      <path class="hand-silhouette hand-b glow-blue" d="M210 430 C212 380 216 334 219 300 C220 284 213 268 221 258 C230 247 242 258 242 274 L244 308 C244 315 253 315 254 308 L258 236 C259 221 272 214 281 224 C287 230 287 241 286 252 L282 318 C282 326 291 327 294 320 L311 250 C315 235 329 230 338 241 C344 248 344 257 340 268 L319 333 C316 342 325 346 331 338 L358 303 C368 290 384 290 390 303 C395 313 388 324 379 334 L337 381 C325 395 323 412 326 430 Z"/>
+      <rect class="wrist-band" x="223" y="382" width="98" height="11" rx="6" transform="rotate(4 272 388)"/>
+
+      <path class="hand-silhouette hand-c glow-gold" d="M374 430 C375 386 379 340 382 308 C384 292 378 278 386 269 C394 260 405 268 405 282 L407 317 C408 324 416 324 417 317 L421 247 C422 232 434 225 443 234 C449 240 449 250 448 262 L444 323 C444 331 453 332 456 325 L473 261 C477 247 490 242 499 252 C505 259 505 268 501 279 L480 338 C477 347 486 351 492 344 L518 312 C528 300 543 300 549 312 C554 322 547 332 538 342 L499 384 C486 398 484 414 486 430 Z"/>
+
+      <!-- center big hands -->
+      <path class="hand-silhouette hand-d glow-pink" d="M560 430 C563 365 572 311 578 266 C581 242 572 219 583 206 C592 195 607 206 607 227 L607 274 C607 282 618 282 619 274 L625 181 C626 161 642 152 653 164 C661 172 661 185 660 200 L656 283 C656 292 668 293 671 284 L687 193 C691 174 708 167 719 180 C726 188 726 201 721 216 L701 302 C699 311 711 316 717 307 L747 251 C757 234 775 231 784 245 C791 257 786 271 778 284 L740 345 C725 369 723 399 727 430 Z"/>
+      <rect class="wrist-band" x="580" y="377" width="145" height="13" rx="7" transform="rotate(2 652 384)"/>
+
+      <path class="hand-silhouette hand-a glow-blue" d="M760 430 C765 371 772 321 777 281 C780 259 773 239 783 227 C792 216 806 227 806 247 L806 292 C806 299 816 299 817 292 L823 205 C824 187 839 178 849 189 C856 197 856 209 854 222 L850 302 C850 310 861 312 864 304 L881 220 C885 203 901 197 911 209 C918 217 917 228 913 242 L892 318 C889 328 901 333 907 324 L937 278 C947 263 964 262 972 275 C978 286 973 298 965 309 L925 360 C908 382 907 407 911 430 Z"/>
+      <rect class="wrist-band" x="781" y="383" width="128" height="12" rx="6" transform="rotate(-4 845 389)"/>
+
+      <!-- right side raised hands -->
+      <path class="hand-silhouette hand-b glow-gold" d="M990 430 C992 379 997 333 1000 298 C1002 281 995 266 1004 256 C1012 247 1025 257 1025 274 L1026 307 C1027 315 1036 315 1037 307 L1042 231 C1043 215 1057 207 1066 218 C1073 225 1072 237 1071 249 L1067 318 C1067 326 1077 327 1080 319 L1098 247 C1102 231 1117 225 1126 237 C1133 245 1132 255 1128 268 L1106 333 C1103 342 1113 346 1119 338 L1146 303 C1157 290 1174 290 1180 304 C1185 314 1178 326 1168 337 L1125 382 C1112 396 1110 413 1113 430 Z"/>
+      <rect class="wrist-band" x="1006" y="381" width="107" height="11" rx="6" transform="rotate(3 1059 386)"/>
+
+      <path class="hand-silhouette hand-c glow-pink" d="M1185 430 C1187 375 1194 326 1198 288 C1201 267 1194 249 1203 238 C1212 228 1225 238 1225 256 L1226 294 C1227 301 1236 301 1237 294 L1242 214 C1243 197 1256 189 1266 200 C1273 207 1273 218 1271 231 L1268 306 C1268 314 1278 315 1281 307 L1297 228 C1301 212 1315 206 1325 218 C1331 225 1330 236 1326 248 L1307 322 C1304 331 1315 335 1321 327 L1348 284 C1358 269 1374 267 1382 280 C1388 290 1383 303 1375 314 L1337 365 C1322 385 1321 410 1324 430 Z"/>
+      <rect class="wrist-band" x="1205" y="381" width="119" height="12" rx="6" transform="rotate(-2 1265 387)"/>
+    </svg>
+  </div>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+    <!-- Beat Visualizer -->
+    <div class="beat-viz">
+      <div class="beat-bar"></div><div class="beat-bar"></div><div class="beat-bar"></div>
+      <div class="beat-bar"></div><div class="beat-bar"></div><div class="beat-bar"></div>
+      <div class="beat-bar"></div><div class="beat-bar"></div><div class="beat-bar"></div>
+    </div>
+
+    <!-- LOGO - FRONT AND CENTER -->
+    <div class="hero-logo-container">
+      <div class="hero-logo-glow"></div>
+      <div class="hero-logo">
+        <span class="k">K</span><span class="izmat">IZMAT</span>
+      </div>
+    </div>
+
+    <p class="hero-tagline">Where Destiny Meets the Dance Floor</p>
+    <p class="hero-sub-brand">Events &bull; Concerts &bull; Nightlife &bull; Productions</p>
+
+    <div class="hero-buttons">
+      <a href="#events" class="btn-primary"><span>Upcoming Events</span></a>
+      <a href="#contact" class="btn-outline">Book Private Event</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Bollywood Nights <span class="dot"></span> Live Concerts <span class="dot"></span> Cruise Parties <span class="dot"></span> Private Events <span class="dot"></span> Corporate Galas <span class="dot"></span> Festival Celebrations <span class="dot"></span> DJ Nights <span class="dot"></span> Cultural Showcases</div>
+    <div class="marquee-item">Bollywood Nights <span class="dot"></span> Live Concerts <span class="dot"></span> Cruise Parties <span class="dot"></span> Private Events <span class="dot"></span> Corporate Galas <span class="dot"></span> Festival Celebrations <span class="dot"></span> DJ Nights <span class="dot"></span> Cultural Showcases</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-item reveal"><div class="stat-number" data-target="200">0</div><div class="stat-label">Events Hosted</div></div>
+  <div class="stat-item reveal"><div class="stat-number" data-target="175">0</div><div class="stat-label">Thousand Guests</div></div>
+  <div class="stat-item reveal"><div class="stat-number" data-target="50">0</div><div class="stat-label">Artists Featured</div></div>
+  <div class="stat-item reveal"><div class="stat-number" data-target="8">0</div><div class="stat-label">Years of Excellence</div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-section">
+    <div class="about-image reveal"><div class="about-image-inner"></div><div class="about-image-border"></div></div>
+    <div>
+      <div class="section-label reveal">Who We Are</div>
+      <h2 class="section-title reveal">Born from<br>Passion, Built<br>for <span style="color:var(--gold)">Legacy</span></h2>
+      <p class="section-desc reveal">Kizmat Events is Michigan's most prestigious Desi and Bollywood entertainment brand. From electrifying nightclub takeovers to sold-out arena concerts, we craft unforgettable experiences that unite cultures and ignite dance floors across North America.</p>
+      <div class="about-features reveal">
+        <div class="about-feature"><h4>Nightlife</h4><p>Premium club events with world-class DJs and immersive production</p></div>
+        <div class="about-feature"><h4>Concerts</h4><p>Headlining tours featuring top Bollywood and indie artists</p></div>
+        <div class="about-feature"><h4>Private Events</h4><p>Weddings, corporate galas, and bespoke celebrations</p></div>
+        <div class="about-feature"><h4>Productions</h4><p>Full-service sound, lighting, staging, and event design</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section" id="events">
+  <div class="section-label reveal">What's Next</div>
+  <h2 class="section-title reveal">Upcoming <span style="color:var(--gold)">Events</span></h2>
+  <p class="section-desc reveal">Secure your spot before they sell out.</p>
+  <div class="events-grid">
+    <div class="event-card reveal"><div class="event-image"><div class="event-image-bg ev1"></div><div class="event-badge">Hot</div></div><div class="event-info"><div class="event-date">Jun 28, 2026</div><h3 class="event-name">Desi Fest — Kite Festival & Color Splash</h3><p class="event-venue">Possum Hollow Park, Michigan</p><div class="event-footer"><span class="event-price">Free RSVP</span><a href="#" class="event-btn">Reserve Now</a></div></div></div>
+    <div class="event-card reveal"><div class="event-image"><div class="event-image-bg ev2"></div><div class="event-badge vip">VIP</div></div><div class="event-info"><div class="event-date">Jul 19, 2026</div><h3 class="event-name">Bollywood Yacht Party</h3><p class="event-venue">Detroit Riverfront</p><div class="event-footer"><span class="event-price">$65+</span><a href="#" class="event-btn">Get Tickets</a></div></div></div>
+    <div class="event-card reveal"><div class="event-image"><div class="event-image-bg ev3"></div></div><div class="event-info"><div class="event-date">Aug 15, 2026</div><h3 class="event-name">Independence Day Gala</h3><p class="event-venue">The Fillmore, Detroit</p><div class="event-footer"><span class="event-price">$45+</span><a href="#" class="event-btn">Get Tickets</a></div></div></div>
+    <div class="event-card reveal"><div class="event-image"><div class="event-image-bg ev4"></div><div class="event-badge">New</div></div><div class="event-info"><div class="event-date">Sep 12, 2026</div><h3 class="event-name">Kizmat After Dark — Neon Edition</h3><p class="event-venue">Elektricity Nightclub</p><div class="event-footer"><span class="event-price">$30+</span><a href="#" class="event-btn">Get Tickets</a></div></div></div>
+    <div class="event-card reveal"><div class="event-image"><div class="event-image-bg ev5"></div></div><div class="event-info"><div class="event-date">Oct 24, 2026</div><h3 class="event-name">Diwali Grand Celebration</h3><p class="event-venue">Suburban Collection Showplace</p><div class="event-footer"><span class="event-price">$55+</span><a href="#" class="event-btn">Get Tickets</a></div></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="section-label reveal">What We Do</div>
+    <h2 class="section-title reveal">Full-Service <span style="color:var(--gold)">Productions</span></h2>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-number">01</div><h3 class="service-title">Event Curation</h3><p class="service-desc">Concept design, artist booking, venue selection, and full event management.</p></div>
+      <div class="service-card reveal"><div class="service-number">02</div><h3 class="service-title">Sound & Stage</h3><p class="service-desc">Professional-grade sound, LED walls, intelligent lighting, and custom stage builds.</p></div>
+      <div class="service-card reveal"><div class="service-number">03</div><h3 class="service-title">Private Events</h3><p class="service-desc">Luxury weddings, milestones, corporate gatherings — tailored to your vision.</p></div>
+      <div class="service-card reveal"><div class="service-number">04</div><h3 class="service-title">Brand Partnerships</h3><p class="service-desc">Sponsorship integrations, co-branded activations, and influencer collaborations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="section-label reveal">The Vibe</div>
+  <h2 class="section-title reveal">Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><div class="gallery-item-bg g1"></div><div class="overlay"><span>View</span></div></div>
+    <div class="gallery-item reveal"><div class="gallery-item-bg g2"></div><div class="overlay"><span>View</span></div></div>
+    <div class="gallery-item reveal"><div class="gallery-item-bg g3"></div><div class="overlay"><span>View</span></div></div>
+    <div class="gallery-item reveal"><div class="gallery-item-bg g4"></div><div class="overlay"><span>View</span></div></div>
+    <div class="gallery-item reveal"><div class="gallery-item-bg g5"></div><div class="overlay"><span>View</span></div></div>
+    <div class="gallery-item reveal"><div class="gallery-item-bg g6"></div><div class="overlay"><span>View</span></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="section-label reveal">What They Say</div>
+  <h2 class="section-title reveal">Guest <span style="color:var(--gold)">Reviews</span></h2>
+  <div class="testimonials-track">
+    <div class="testimonial reveal"><div class="stars">★ ★ ★ ★ ★</div><p class="testimonial-text">Kizmat doesn't throw events — they create moments you'll tell your grandchildren about. Absolute world-class energy every single time.</p><p class="testimonial-author">Priya M.</p><p class="testimonial-role">Detroit, MI</p></div>
+    <div class="testimonial reveal"><div class="stars">★ ★ ★ ★ ★</div><p class="testimonial-text">The production quality is unmatched. Sound, lights, vibes — everything was next level. This is the gold standard for Desi events in Michigan.</p><p class="testimonial-author">Arjun K.</p><p class="testimonial-role">Ann Arbor, MI</p></div>
+    <div class="testimonial reveal"><div class="stars">★ ★ ★ ★ ★</div><p class="testimonial-text">Hired Kizmat for our wedding reception and they transformed the entire venue. Our guests are still raving about it months later.</p><p class="testimonial-author">Neha & Rahul S.</p><p class="testimonial-role">Troy, MI</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div style="position:relative">
+    <div class="section-label reveal">Don't Miss Out</div>
+    <h2 class="cta-title reveal">Your Night<br>Awaits<span style="color:var(--gold)">.</span></h2>
+    <p class="cta-desc reveal">Join 175,000+ guests who chose destiny over ordinary.</p>
+    <div class="hero-buttons reveal">
+      <a href="mailto:info@kizmatevents.com" class="btn-primary"><span>Contact Us</span></a>
+      <a href="#events" class="btn-outline">Browse Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="font-size:24px">KIZMAT<span>.</span></a>
+      <p>Michigan's most prestigious Desi & Bollywood events brand. Crafting unforgettable experiences since 2018.</p>
+      <div class="footer-social"><a href="#">IG</a><a href="#">FB</a><a href="#">YT</a><a href="#">X</a></div>
+    </div>
+    <div><h4 class="footer-title">Navigate</h4><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#events">Events</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="#">Nightlife Events</a></li><li><a href="#">Live Concerts</a></li><li><a href="#">Private Events</a></li><li><a href="#">Cruise Parties</a></li><li><a href="#">Corporate Galas</a></li></ul></div>
+    <div><h4 class="footer-title">Contact</h4><ul class="footer-links"><li><a href="mailto:info@kizmatevents.com">info@kizmatevents.com</a></li><li><a href="tel:+12489990000">(248) 999-0000</a></li><li><a href="#">Michigan, USA</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 KIZMAT EVENTS. All Rights Reserved.</p><p>Designed with destiny in mind.</p></div>
+</footer>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('visible'),i*80);obs.unobserve(en.target)}})},{threshold:.15});
+reveals.forEach(el=>obs.observe(el));
+
+// Counter
+const counters=document.querySelectorAll('.stat-number');
+const cObs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const el=en.target,t=+el.dataset.target;let c=0;const s=Math.ceil(t/60);const timer=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(timer)}el.textContent=c+'+'},25);cObs.unobserve(el)}})},{threshold:.5});
+counters.forEach(c=>cObs.observe(c));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// Generate disco dots
+const dd=document.getElementById('discoDots');
+for(let i=0;i<40;i++){
+  const dot=document.createElement('div');
+  dot.className='disco-dot';
+  dot.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*70}%;width:${2+Math.random()*4}px;height:${2+Math.random()*4}px;background:${['#FF10F0','#00D4FF','#BF40FF','#39FF14','#FFD700','#FF6B00'][Math.floor(Math.random()*6)]};animation-duration:${1+Math.random()*3}s;animation-delay:${Math.random()*3}s`;
+  dd.appendChild(dot);
+}
+
+// Generate particles
+const pp=document.getElementById('particles');
+for(let i=0;i<20;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;bottom:-10px;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;background:${Math.random()>.5?'var(--gold)':'rgba(255,255,255,0.4)'};animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s`;
+  pp.appendChild(p);
+}
+
+// Generate floating music notes for a stronger party atmosphere
+const notesWrap=document.getElementById('musicNotes');
+const notes=['♪','♫','♬','♩'];
+for(let i=0;i<18;i++){
+  const n=document.createElement('div');
+  n.className='music-note';
+  n.textContent=notes[Math.floor(Math.random()*notes.length)];
+  n.style.cssText=`left:${8+Math.random()*84}%;font-size:${16+Math.random()*18}px;color:${Math.random()>.5?'rgba(212,168,83,.58)':'rgba(245,240,232,.48)'};animation-duration:${4.5+Math.random()*4.5}s;animation-delay:${Math.random()*5}s`;
+  notesWrap.appendChild(n);
+}
+</script>
+</body>
+</html>
